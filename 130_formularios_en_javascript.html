@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>formularios con htmll</title>
+  </head>
+  <!--con onload: cuando se carga la pagina-->
+  <!--con onchange: cuando se deja de modificar-->
+
+  <body onload="entrar()">
+    <form id="formulario">
+      Nombre:
+      <input type="text" name="nombre" onchange="convertir_mayuscula(this)" />
+      <br />
+      Apellido:<input type="text" name="apellido" />
+    </form>
+    <button onclick="mostrarValores()">Mostrar</button>
+
+    <h2 id="salga"></h2>
+    <script>
+      function convertir_mayuscula(cosa_cualquiera) {
+        cosa_cualquiera.value = cosa_cualquiera.value.toUpperCase();
+      }
+
+      function entrar() {
+        alert("entrando...");
+        let cadena = "";
+        if (navigator.cookieEnabled) {
+          cadena = "cookies estan habilitadas";
+        } else {
+          cadena = "cookies   NO  estan habilitadas";
+        }
+        console.log(cadena);
+      }
+
+      function mostrarValores() {
+        let formulario = document.forms["formulario"];
+        let texto_nombre_y_apellido = "";
+        let nombre = formulario["nombre"];
+        let apellido = formulario["apellido"];
+        text_nombre = nombre.value;
+        text_apellido = apellido.value;
+        texto_nombre_y_apellido =
+          "Nombre Completo:" + nombre.value + "  " + apellido.value;
+        /*forma conjunta de acceder al nombre y apellido*/
+        /*for (let elemento of formulario) {
+          textico += elemento.value + "<br/>";
+        }
+        console.log(textico)*/
+        console.log(text_nombre);
+        console.log(text_apellido);
+        console.log(texto_nombre_y_apellido);
+        /*para mostrar en diferentes elementos*/
+        document.getElementById("salga").innerHTML = texto_nombre_y_apellido;
+        /*document.write() : sobreescibe todo */
+      }
+    </script>
+    <br />
+    <button onclick="mostrarimagen()">Mostrar imagen y cambio de color</button>
+    <img
+      id="imagen"
+      src="http://globalmentoring.com.mx/imagenes/javascript.png"
+    />
+    <script>
+      function mostrarimagen() {
+        document.getElementById("imagen").src =
+          "http://globalmentoring.com.mx/imagenes/html5.png";
+        document.getElementById("salga").style.color = "blue";
+      }
+    </script>
+    <!-- manejo de evntos en titulos primera forma-->
+    <!--<h3 onclick="cambiarTexro(this)">dale click en este titulo</h3>
+    <script>
+      function cambiarTexro(titulo) {
+        titulo.innerHTML = "cambio d titulo";
+      }
+    </script>--><!-- manejo de evntos en titulos segunda forma-->
+    <h3 id="titiloo">dale click en este titulo</h3>
+    <script>
+      document.getElementById("titiloo").onclick = cambiarTexto;
+      function cambiarTexto() {
+        document.getElementById("titiloo").innerHTML = "Nuevo titulo";
+      }
+    </script>
+    <!--con onmouseover: cuando el mouse esta por encima-->
+    <!--con onmouseout: cuando el mouse ya no esta por encima-->
+    <!--con onmousedown: cuando se hace click mantenido-->
+    <h4 id="h44" onmouseover="rojo(this)" onmouseout="green(this)">
+      pon mouse encima--
+    </h4>
+    <script>
+      function rojo(h44) {
+        h44.style.color = "red";
+      }
+      function green(h44) {
+        h44.style.color = "green";
+      }
+    </script>
+    <!--con onfocus: cuando se le da en inputs como cajas de textos-->
+    <!--con onblur: cuando se sale de la caja de texto de los inputs-->
+    <!-- <input type="text" onfocus="cambiar(this)"  onblur="regresar(this)"-->
+    <!-- function cambiar(elementoInput){
+      elementoInput.style.background="yellow"
+    }
+    function regresar(elementoInput){
+      elementoInput.style.background="white"
+    ----otra forma-----
+    document.getElementById('nombre').addEventListener('focus',cambiar)
+    document.getElementById('nombre').addEventListener('blur',regresar)
+    function cambiar(evento){
+      let comonente=evento.target
+      componente.style.background='yellow'
+    }
+    function regresar(evento){
+      evento.target.style.background='white'
+    }
+       -->
+  </body>
+</html>

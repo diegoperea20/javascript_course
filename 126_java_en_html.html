@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EJEMPLO DOM con javascript</title>
+    <style>
+      .azul {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="cabecero">Ejemplo de dom con javascript</h1>
+    <p class="azul" id="parrafo">Salidos!!</p>
+    <p id="parrafo1">otro parafo!!</p>
+    <!--siempre se pone el script despues de lo que se va a capturar-->
+    <!--el innerhtml es para acceder al texto dentro del elemento-->
+    <!--document es el objeto para acceder a todos los elementos -->
+    <script>
+      let cabecero = document.getElementById("cabecero").innerHTML;
+      console.log("valor cabecero:" + cabecero);
+      let parrafo = document.getElementById("parrafo");
+      console.log("valor parrafo:" + parrafo.innerHTML);
+      console.log("saludos desde javascript");
+      parrafo.innerHTML = "Nuevo valor del parrafo";
+      cabecero.innerHTML = "nuevo cabecero";
+      
+      let parrafos = document.getElementsByTagName("p");
+      console.log("N° de parrafos:" + parrafos.length);
+      for (let i = 0; i < parrafos.length; i++) {
+        console.log("i: " + parrafos[i].innerHTML);
+      }
+
+      let parrafos_con_azul = document.getElementsByClassName("azul");
+      console.log("N° de parrafos con azul :" + parrafos_con_azul.length);
+      for (let i_azul = 0; i_azul < parrafos_con_azul.length; i_azul++) {
+        console.log("i_azul: " + parrafos_con_azul[i_azul].innerHTML);
+      }
+    </script>
+  </body>
+</html>
